@@ -6,23 +6,6 @@
   <title>Rainfall Softworks - Summer Programs</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #ffffff;
-      --fg: #000000;
-      --card-bg: #f2f2f2;
-      --card-shadow: rgba(0, 0, 0, 0.1);
-      --highlight: linear-gradient(90deg, #7928ca, #f81ce5);
-      --outline: #00000033;
-    }
-
-    body.dark-mode {
-      --bg: #0f0f10;
-      --fg: #ffffff;
-      --card-bg: #1e1e20;
-      --card-shadow: rgba(255, 0, 255, 0.1);
-      --outline: transparent;
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -31,35 +14,43 @@
     }
 
     body {
-      background: var(--bg);
-      color: var(--fg);
-      transition: background 0.5s ease, color 0.5s ease;
+      transition: background 0.5s, color 0.5s;
+      line-height: 1.6;
     }
 
-    .toggle-theme {
+    body.light-mode {
+      background: #f4f4f4;
+      color: #111;
+    }
+
+    body.dark-mode {
+      background: linear-gradient(135deg, #0f0f10, #1a1a2e, #0f0f10);
+      color: white;
+    }
+
+    /* Toggle Button */
+    .theme-toggle {
       position: fixed;
       top: 1rem;
       right: 1rem;
+      background: none;
+      border: 2px solid currentColor;
+      border-radius: 8px;
       padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 6px;
-      background: var(--card-bg);
-      color: var(--fg);
       cursor: pointer;
-      box-shadow: 0 2px 6px var(--card-shadow);
-      z-index: 999;
+      font-weight: bold;
+      z-index: 100;
     }
 
+    /* Hero Section */
     .hero {
       text-align: center;
       padding: 6rem 1rem 4rem;
-      background: radial-gradient(circle at top, #e0e0ff, #ffffff);
-      background-size: 400% 400%;
-      animation: gradientMove 20s ease infinite;
+      background: radial-gradient(circle at top, #ffffff20, transparent);
     }
 
-    body.dark-mode .hero {
-      background: radial-gradient(circle at top, #1a1a2e, #0f0f10);
+    body.light-mode .hero {
+      background: radial-gradient(circle at top, #eaeaea, #f4f4f4);
     }
 
     .hero h1 {
@@ -69,21 +60,20 @@
     }
 
     .hero h1 span {
-      background: var(--highlight);
+      background: linear-gradient(90deg, #f81ce5, #7928ca);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero p {
-      color: #666;
+      color: inherit;
       max-width: 600px;
       margin: 1rem auto 2rem;
+      opacity: 0;
+      animation: fadeIn 2s ease-in forwards;
     }
 
-    body.dark-mode .hero p {
-      color: #aaa;
-    }
-
+    /* Dashboard Cards */
     .dashboard {
       display: flex;
       justify-content: center;
@@ -91,24 +81,20 @@
       flex-wrap: wrap;
       gap: 2rem;
       max-width: 1000px;
-      padding: 0 1rem;
     }
 
     .card {
-      background: var(--card-bg);
+      background: #1e1e20;
       padding: 1.5rem;
       border-radius: 12px;
       width: 300px;
-      box-shadow: 0 0 12px var(--card-shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      box-shadow: 0 0 12px rgba(255, 0, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border 0.3s ease;
       text-decoration: none;
       color: inherit;
-      border: 1px solid var(--outline);
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px var(--card-shadow);
+      opacity: 0;
+      transform: scale(0.95);
+      animation: fadeInZoom 1s ease forwards;
     }
 
     .card img {
@@ -117,17 +103,29 @@
       margin-bottom: 1rem;
     }
 
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
+      background: #2a2a2e;
+    }
+
+    body.light-mode .card {
+      background: #fff;
+      border: 1px solid #000;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    body.light-mode .card:hover {
+      background: #f0f0f0;
+    }
+
     .card h2 {
       font-size: 1.25rem;
       margin-bottom: 0.75rem;
     }
 
     .card p {
-      color: #444;
-    }
-
-    body.dark-mode .card p {
-      color: #bbb;
+      color: inherit;
     }
 
     a {
@@ -139,21 +137,20 @@
       text-decoration: underline;
     }
 
-    @keyframes gradientMove {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInZoom {
+      to {
+        opacity: 1;
+        transform: scale(1);
       }
     }
   </style>
 </head>
 <body class="light-mode">
-  <button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button>
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
 
   <section class="hero">
     <h1><span>Rainfall Softworks</span> Summer Programs</h1>
@@ -209,9 +206,24 @@
   </section>
 
   <script>
+    // On load, apply saved theme
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.body.classList.remove('light-mode', 'dark-mode');
+      document.body.classList.add(savedTheme + '-mode');
+    });
+
     function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
-      document.body.classList.toggle('light-mode');
+      const body = document.body;
+      if (body.classList.contains('light-mode')) {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        localStorage.setItem('theme', 'light');
+      }
     }
   </script>
 </body>
