@@ -17,109 +17,29 @@
       background: linear-gradient(135deg, #0f0f10, #1a1a2e, #0f0f10);
       color: white;
       line-height: 1.6;
-      transition: background 0.6s ease, color 0.6s ease;
+      transition: background 0.5s ease, color 0.5s ease;
     }
 
-    /* Light Mode */
     body.light-mode {
-      background: linear-gradient(135deg, #ffffff, #f0f0f0, #ffffff);
+      background: #f0f0f0;
       color: #222;
     }
 
-    body.light-mode .hero {
-      background: radial-gradient(circle at top, #ffffff, #f0f0f0);
-    }
-
-    body.light-mode .hero p {
-      color: #444;
-    }
-
-    body.light-mode .card {
-      background: #fff;
-      color: #222;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    body.light-mode .card:hover {
-      background: #f7f7f7;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    }
-
-    body.light-mode .card p {
-      color: #555;
-    }
-
-    /* Transitions */
-    body.fade-out {
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    body.fade-in {
-      opacity: 1;
-      transition: opacity 0.3s ease;
-    }
-
-    /* Theme Toggle Switch */
-    .theme-switch-wrapper {
-      position: absolute;
+    .toggle-theme {
+      position: fixed;
       top: 1rem;
       right: 1rem;
-      z-index: 1000;
-    }
-
-    .theme-switch {
-      position: relative;
-      display: inline-block;
-      width: 60px;
-      height: 34px;
-    }
-
-    .theme-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .slider {
-      position: absolute;
+      background: none;
+      border: 2px solid currentColor;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
       cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #444;
-      transition: 0.4s;
-      border-radius: 34px;
+      z-index: 1000;
+      font-weight: bold;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
     }
 
-    .slider::before {
-      position: absolute;
-      content: '☀️';
-      height: 26px;
-      width: 26px;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      color: black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      border-radius: 50%;
-      transition: 0.4s;
-    }
-
-    input:checked + .slider {
-      background-color: #888;
-    }
-
-    input:checked + .slider::before {
-      transform: translateX(26px);
-      content: '🌙';
-    }
-
-    /* Hero Section */
     .hero {
       text-align: center;
       padding: 6rem 1rem 4rem;
@@ -128,7 +48,6 @@
       transform: translateY(20px);
       animation: fadeInUp 1s ease forwards, gradientMove 20s ease infinite;
       background-size: 400% 400%;
-      transition: background 0.6s ease, color 0.6s ease;
     }
 
     .hero h1 {
@@ -150,7 +69,6 @@
       animation: fadeIn 2s ease-in forwards;
     }
 
-    /* Dashboard Cards */
     .dashboard {
       display: flex;
       justify-content: center;
@@ -166,7 +84,7 @@
       border-radius: 12px;
       width: 300px;
       box-shadow: 0 0 12px rgba(255, 0, 255, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.6s ease, color 0.6s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
       text-decoration: none;
       color: inherit;
       opacity: 0;
@@ -186,9 +104,15 @@
       background: #2a2a2e;
     }
 
-    .card:nth-child(n) {
-      animation-delay: calc(0.2s + (var(--i, 0) * 0.1s));
-    }
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.3s; }
+    .card:nth-child(3) { animation-delay: 0.4s; }
+    .card:nth-child(4) { animation-delay: 0.5s; }
+    .card:nth-child(5) { animation-delay: 0.6s; }
+    .card:nth-child(6) { animation-delay: 0.7s; }
+    .card:nth-child(7) { animation-delay: 0.8s; }
+    .card:nth-child(8) { animation-delay: 0.9s; }
+    .card:nth-child(9) { animation-delay: 1s; }
 
     .card h2 {
       font-size: 1.25rem;
@@ -206,6 +130,35 @@
 
     a:hover {
       color: #fff;
+    }
+
+    body.light-mode .hero {
+      background: #e6e6f0;
+    }
+
+    body.light-mode .hero h1 span {
+      background: linear-gradient(90deg, #7f00ff, #e100ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    body.light-mode .hero p {
+      color: #444;
+    }
+
+    body.light-mode .card {
+      background: #fff;
+      color: #222;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border: 1px solid black;
+    }
+
+    body.light-mode .card p {
+      color: #444;
+    }
+
+    body.light-mode .toggle-theme {
+      background-color: rgba(0, 0, 0, 0.05);
     }
 
     @keyframes fadeInUp {
@@ -229,105 +182,72 @@
     }
 
     @keyframes gradientMove {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
   </style>
 </head>
 <body>
-  <!-- Toggle Switch -->
-  <div class="theme-switch-wrapper">
-    <label class="theme-switch" for="theme-toggle">
-      <input type="checkbox" id="theme-toggle" />
-      <span class="slider"></span>
-    </label>
-  </div>
+  <button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button>
 
-  <!-- Hero -->
   <section class="hero">
     <h1><span>Rainfall Softworks</span> Summer Programs</h1>
-    <p>New website is in the making. All classes and programs are hosted on Zoom, Discord, and Google Meet. Each class will have 1 teacher and possibly up to 3 teaching assistants. Office hours are provided for each class. Saturday 12:00 - 14:00 EST is office hours for all classes. If you have any questions, please contact RainfallSoftworks@gmail.com. </p>
+    <p>New website is in the making. All classes and programs are hosted on Zoom, Discord, and Google Meet. Each class will have 1 teacher and possibly up to 3 teaching assistants. Office hours are provided for each class. Saturday 12:00 - 14:00 EST is office hours for all classes. If you have any questions, please contact RainfallSoftworks@gmail.com.</p>
   </section>
 
-  <!-- Dashboard -->
   <section class="dashboard">
-    <a class="card" href="basic-java.html" style="--i:0">
+    <a class="card" href="basic-java.html">
       <img src="Processing.png" alt="Processing Logo">
       <h2>Basic Java Processing</h2>
       <p>Learn Java with daily one-hour sessions for 2 weeks. Ages 13–18. $150.</p>
     </a>
-    <a class="card" href="java-month.html" style="--i:1">
+    <a class="card" href="java-month.html">
       <img src="Processing.png" alt="Processing Logo">
       <h2>Java Processing (1 Month)</h2>
       <p>In-depth OOP course to learn Java. Ages 13–18. $450.</p>
     </a>
-    <a class="card" href="scratch-free.html" style="--i:2">
+    <a class="card" href="scratch-free.html">
       <img src="Scratch.png" alt="Scratch Logo">
       <h2>Scratch Programming</h2>
       <p>Intro to block coding. One 2-hour session. Ages 7–13. Free.</p>
     </a>
-    <a class="card" href="roblox-basics.html" style="--i:3">
+    <a class="card" href="roblox-basics.html">
       <img src="RobloxStudio.png" alt="Roblox Logo">
       <h2>Roblox Studio Basics</h2>
       <p>Fun Roblox game creation. 5 one hour classes. Ages 7–15. $75.</p>
     </a>
-    <a class="card" href="roblox-intermediate.html" style="--i:4">
+    <a class="card" href="roblox-intermediate.html">
       <img src="RobloxStudio.png" alt="Roblox Logo">
       <h2>Intermediate Roblox Studio (4 Weeks)</h2>
       <p>Advanced LUA and projects. 20 two hour classes. Ages 10–15. $650.</p>
     </a>
-    <a class="card" href="html-css.html" style="--i:5">
+    <a class="card" href="html-css.html">
       <img src="Github.png" alt="Github Logo">
       <h2>HTML & CSS Website Building</h2>
       <p>Code and host your own website.</p>
     </a>
-    <a class="card" href="netbeans-java.html" style="--i:6">
+    <a class="card" href="netbeans-java.html">
       <img src="Netbeans.jpg" alt="NetBeans Logo">
       <h2>Java NetBeans Programming</h2>
       <p>Testing</p>
     </a>
-    <a class="card" href="scratch-jr.html" style="--i:7">
+    <a class="card" href="scratch-jr.html">
       <img src="https://via.placeholder.com/300x150?text=Scratch+JR" alt="Scratch JR">
       <h2>Scratch JR</h2>
       <p>Testing</p>
     </a>
-    <a class="card" href="python-ai.html" style="--i:8">
+    <a class="card" href="python-ai.html">
       <img src="https://via.placeholder.com/300x150?text=Python+AI" alt="Python AI">
       <h2>Intro to Python & AI</h2>
       <p>Explore Python and beginner AI concepts. Age 13–18. $180 total.</p>
     </a>
   </section>
 
-  <!-- JavaScript -->
   <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    // Load theme preference
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme === 'light') {
-      body.classList.add('light-mode');
-      themeToggle.checked = true;
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
     }
-
-    themeToggle.addEventListener('change', () => {
-      body.classList.add('fade-out');
-      setTimeout(() => {
-        body.classList.toggle('light-mode');
-        const isLight = body.classList.contains('light-mode');
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        body.classList.remove('fade-out');
-        body.classList.add('fade-in');
-        setTimeout(() => body.classList.remove('fade-in'), 300);
-      }, 300);
-    });
   </script>
 </body>
 </html>
