@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rainfall Softworks - Summer Programs</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
   <style>
@@ -14,8 +14,8 @@
     }
 
     body {
-      transition: background 0.5s, color 0.5s;
       line-height: 1.6;
+      transition: background 0.5s ease, color 0.5s ease;
     }
 
     body.light-mode {
@@ -28,29 +28,33 @@
       color: white;
     }
 
-    /* Toggle Button */
     .theme-toggle {
       position: fixed;
       top: 1rem;
       right: 1rem;
-      background: none;
       border: 2px solid currentColor;
       border-radius: 8px;
       padding: 0.5rem 1rem;
       cursor: pointer;
       font-weight: bold;
       z-index: 100;
+      background-color: transparent;
+      color: #111;
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode .theme-toggle {
+      color: white;
+      border-color: white;
     }
 
     /* Hero Section */
     .hero {
       text-align: center;
       padding: 6rem 1rem 4rem;
-      background: radial-gradient(circle at top, #ffffff20, transparent);
-    }
-
-    body.light-mode .hero {
-      background: radial-gradient(circle at top, #eaeaea, #f4f4f4);
+      background: radial-gradient(circle at top, #1a1a2e, #0f0f10);
+      background-size: 400% 400%;
+      animation: gradientMove 20s ease infinite, fadeInUp 1s ease forwards;
     }
 
     .hero h1 {
@@ -66,10 +70,9 @@
     }
 
     .hero p {
-      color: inherit;
+      color: #666;
       max-width: 600px;
       margin: 1rem auto 2rem;
-      opacity: 0;
       animation: fadeIn 2s ease-in forwards;
     }
 
@@ -81,17 +84,19 @@
       flex-wrap: wrap;
       gap: 2rem;
       max-width: 1000px;
+      padding: 0 1rem;
     }
 
     .card {
-      background: #1e1e20;
+      background: #ffffff;
+      color: #111;
       padding: 1.5rem;
       border-radius: 12px;
       width: 300px;
-      box-shadow: 0 0 12px rgba(255, 0, 255, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border 0.3s ease;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+      border: 1px solid #ddd;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
       text-decoration: none;
-      color: inherit;
       opacity: 0;
       transform: scale(0.95);
       animation: fadeInZoom 1s ease forwards;
@@ -105,19 +110,30 @@
 
     .card:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    body.dark-mode .card {
+      background: #1e1e20;
+      color: white;
+      border: none;
+      box-shadow: 0 0 12px rgba(255, 0, 255, 0.1);
+    }
+
+    body.dark-mode .card:hover {
       background: #2a2a2e;
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
     }
 
-    body.light-mode .card {
-      background: #fff;
-      border: 1px solid #000;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    body.light-mode .card:hover {
-      background: #f0f0f0;
-    }
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.3s; }
+    .card:nth-child(3) { animation-delay: 0.4s; }
+    .card:nth-child(4) { animation-delay: 0.5s; }
+    .card:nth-child(5) { animation-delay: 0.6s; }
+    .card:nth-child(6) { animation-delay: 0.7s; }
+    .card:nth-child(7) { animation-delay: 0.8s; }
+    .card:nth-child(8) { animation-delay: 0.9s; }
+    .card:nth-child(9) { animation-delay: 1s; }
 
     .card h2 {
       font-size: 1.25rem;
@@ -129,22 +145,38 @@
     }
 
     a {
-      color: inherit;
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes fadeInZoom {
       to {
         opacity: 1;
         transform: scale(1);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
       }
     }
   </style>
@@ -154,7 +186,7 @@
 
   <section class="hero">
     <h1><span>Rainfall Softworks</span> Summer Programs</h1>
-    <p>New website is in the making. All classes and programs are hosted on Zoom, Discord, and Google Meet. Each class will have 1 teacher and possibly up to 3 teaching assistants. Office hours are provided for each class. Saturday 12:00 - 14:00 EST is office hours for all classes. If you have any questions, please contact RainfallSoftworks@gmail.com.</p>
+    <p>New website is in the making. All classes and programs are hosted on Zoom, Discord, and Google Meet. Each class will have 1 teacher and possibly up to 3 teaching assistants. Office hours are provided for each class. Saturday 12:00–14:00 EST is office hours for all classes. If you have any questions, please contact RainfallSoftworks@gmail.com.</p>
   </section>
 
   <section class="dashboard">
@@ -206,24 +238,19 @@
   </section>
 
   <script>
-    // On load, apply saved theme
+    // Apply saved theme on load
     window.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem('theme') || 'light';
+      const saved = localStorage.getItem('theme') || 'light';
       document.body.classList.remove('light-mode', 'dark-mode');
-      document.body.classList.add(savedTheme + '-mode');
+      document.body.classList.add(`${saved}-mode`);
     });
 
     function toggleTheme() {
       const body = document.body;
-      if (body.classList.contains('light-mode')) {
-        body.classList.remove('light-mode');
-        body.classList.add('dark-mode');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        body.classList.remove('dark-mode');
-        body.classList.add('light-mode');
-        localStorage.setItem('theme', 'light');
-      }
+      const isLight = body.classList.contains('light-mode');
+      body.classList.toggle('light-mode', !isLight);
+      body.classList.toggle('dark-mode', isLight);
+      localStorage.setItem('theme', isLight ? 'dark' : 'light');
     }
   </script>
 </body>
