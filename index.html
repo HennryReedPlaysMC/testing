@@ -14,7 +14,6 @@
     }
 
     body {
-      line-height: 1.6;
       transition: background 0.4s ease, color 0.4s ease;
     }
 
@@ -24,7 +23,7 @@
     }
 
     body.dark-mode {
-      background: linear-gradient(135deg, #0f0f10, #1a1a2e, #0f0f10);
+      background: #0f0f10;
       color: white;
     }
 
@@ -52,11 +51,17 @@
     .hero {
       text-align: center;
       padding: 6rem 1rem 4rem;
+      transition: background 0.5s ease;
+    }
+
+    body.light-mode .hero {
+      background: #e4e4e4;
+    }
+
+    body.dark-mode .hero {
       background: radial-gradient(circle at top, #1a1a2e, #0f0f10);
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1s ease forwards, gradientMove 20s ease infinite;
       background-size: 400% 400%;
+      animation: gradientMove 20s ease infinite;
     }
 
     .hero h1 {
@@ -75,7 +80,6 @@
       color: #aaa;
       max-width: 600px;
       margin: 1rem auto 2rem;
-      animation: fadeIn 2s ease-in forwards;
     }
 
     /* Dashboard Cards */
@@ -97,9 +101,6 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
       text-decoration: none;
       color: inherit;
-      opacity: 0;
-      transform: scale(0.95);
-      animation: fadeInZoom 1s ease forwards;
     }
 
     .card img {
@@ -123,17 +124,6 @@
       color: #bbb;
     }
 
-    /* Card animations */
-    .card:nth-child(1) { animation-delay: 0.2s; }
-    .card:nth-child(2) { animation-delay: 0.3s; }
-    .card:nth-child(3) { animation-delay: 0.4s; }
-    .card:nth-child(4) { animation-delay: 0.5s; }
-    .card:nth-child(5) { animation-delay: 0.6s; }
-    .card:nth-child(6) { animation-delay: 0.7s; }
-    .card:nth-child(7) { animation-delay: 0.8s; }
-    .card:nth-child(8) { animation-delay: 0.9s; }
-    .card:nth-child(9) { animation-delay: 1s; }
-
     /* Light mode card adjustments */
     body.light-mode .card {
       background: white;
@@ -146,37 +136,10 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    /* Animations */
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeInZoom {
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-
     @keyframes gradientMove {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
   </style>
 </head>
@@ -189,51 +152,7 @@
   </section>
 
   <section class="dashboard">
-    <a class="card" href="basic-java.html">
-      <img src="Processing.png" alt="Processing Logo">
-      <h2>Basic Java Processing</h2>
-      <p>Learn Java with daily one-hour sessions for 2 weeks. Ages 13–18. $150.</p>
-    </a>
-    <a class="card" href="java-month.html">
-      <img src="Processing.png" alt="Processing Logo">
-      <h2>Java Processing (1 Month)</h2>
-      <p>In-depth OOP course to learn Java. Ages 13–18. $450.</p>
-    </a>
-    <a class="card" href="scratch-free.html">
-      <img src="Scratch.png" alt="Scratch Logo">
-      <h2>Scratch Programming</h2>
-      <p>Intro to block coding. One 2-hour session. Ages 7–13. Free.</p>
-    </a>
-    <a class="card" href="roblox-basics.html">
-      <img src="RobloxStudio.png" alt="Roblox Logo">
-      <h2>Roblox Studio Basics</h2>
-      <p>Fun Roblox game creation. 5 one hour classes. Ages 7–15. $75.</p>
-    </a>
-    <a class="card" href="roblox-intermediate.html">
-      <img src="RobloxStudio.png" alt="Roblox Logo">
-      <h2>Intermediate Roblox Studio (4 Weeks)</h2>
-      <p>Advanced LUA and projects. 20 two hour classes. Ages 10–15. $650.</p>
-    </a>
-    <a class="card" href="html-css.html">
-      <img src="Github.png" alt="Github Logo">
-      <h2>HTML & CSS Website Building</h2>
-      <p>Code and host your own website.</p>
-    </a>
-    <a class="card" href="netbeans-java.html">
-      <img src="Netbeans.jpg" alt="NetBeans Logo">
-      <h2>Java NetBeans Programming</h2>
-      <p>Testing</p>
-    </a>
-    <a class="card" href="scratch-jr.html">
-      <img src="https://via.placeholder.com/300x150?text=Scratch+JR" alt="Scratch JR">
-      <h2>Scratch JR</h2>
-      <p>Testing</p>
-    </a>
-    <a class="card" href="python-ai.html">
-      <img src="https://via.placeholder.com/300x150?text=Python+AI" alt="Python AI">
-      <h2>Intro to Python & AI</h2>
-      <p>Explore Python and beginner AI concepts. Age 13–18. $180 total.</p>
-    </a>
+    <!-- cards go here -->
   </section>
 
   <script>
