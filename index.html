@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rainfall Softworks - Summer Programs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f0f10, #1a1a2e, #0f0f10);
+      color: white;
+      line-height: 1.6;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 6rem 1rem 4rem;
+      background: radial-gradient(circle at top, #1a1a2e, #0f0f10);
+      background-size: 300% 300%;
+      animation: gradientMove 20s ease infinite, fadeInUp 1s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, #f81ce5, #7928ca);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: #bbb;
+      max-width: 600px;
+      margin: 1rem auto 0;
+      font-size: 1.1rem;
+    }
+
+    .hero a {
+      color: #f81ce5;
+      text-decoration: underline;
+    }
+
+    .dashboard {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: #1e1e20;
+      padding: 1.5rem;
+      border-radius: 16px;
+      width: 300px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      opacity: 0;
+      transform: translateY(10px) scale(0.97);
+      animation: fadeInZoom 1s ease forwards;
+    }
+
+    .card:hover {
+      transform: translateY(-5px) scale(1.03);
+      background: #26262b;
+      box-shadow: 0 8px 24px rgba(255, 0, 255, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+      transition: color 0.3s ease;
+    }
+
+    .card:hover h2 {
+      color: #f81ce5;
+    }
+
+    .card p {
+      color: #ccc;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.3s; }
+    .card:nth-child(3) { animation-delay: 0.4s; }
+    .card:nth-child(4) { animation-delay: 0.5s; }
+    .card:nth-child(5) { animation-delay: 0.6s; }
+    .card:nth-child(6) { animation-delay: 0.7s; }
+    .card:nth-child(7) { animation-delay: 0.8s; }
+    .card:nth-child(8) { animation-delay: 0.9s; }
+    .card:nth-child(9) { animation-delay: 1s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInZoom {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes gradientMove {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <h1><span>Rainfall Softworks</span> Summer Programs</h1>
+    <p>
+      Our summer classes are online via Zoom, Discord, and Google Meet. Each class includes a teacher and up to three teaching assistants, plus weekly office hours.<br />
+      General office hours are Saturdays, 12–2 PM EST.<br />
+      Questions? Email us at <a href="mailto:RainfallSoftworks@gmail.com">RainfallSoftworks@gmail.com</a>.
+    </p>
+  </section>
+
+  <section class="dashboard">
+    <a class="card" href="basic-java.html">
+      <img src="Processing.png" alt="Processing Logo">
+      <h2>Basic Java Processing</h2>
+      <p>Learn Java with daily one-hour sessions for 2 weeks. Ages 13–18. $150.</p>
+    </a>
+    <a class="card" href="java-month.html">
+      <img src="Processing.png" alt="Processing Logo">
+      <h2>Java Processing (1 Month)</h2>
+      <p>In-depth OOP course to learn Java. Ages 13–18. $450.</p>
+    </a>
+    <a class="card" href="scratch-free.html">
+      <img src="Scratch.png" alt="Scratch Logo">
+      <h2>Scratch Programming</h2>
+      <p>Intro to block coding. One 2-hour session. Ages 7–13. Free.</p>
+    </a>
+    <a class="card" href="roblox-basics.html">
+      <img src="RobloxStudio.png" alt="Roblox Logo">
+      <h2>Roblox Studio Basics</h2>
+      <p>Fun Roblox game creation. 5 one-hour classes. Ages 7–15. $75.</p>
+    </a>
+    <a class="card" href="roblox-intermediate.html">
+      <img src="RobloxStudio.png" alt="Roblox Logo">
+      <h2>Intermediate Roblox Studio (4 Weeks)</h2>
+      <p>Advanced LUA and projects. 20 two-hour classes. Ages 10–15. $650.</p>
+    </a>
+    <a class="card" href="html-css.html">
+      <img src="Github.png" alt="Github Logo">
+      <h2>HTML & CSS Website Building</h2>
+      <p>Code and host your own website. Ages 13–18. $100.</p>
+    </a>
+    <a class="card" href="netbeans-java.html">
+      <img src="Netbeans.jpg" alt="NetBeans Logo">
+      <h2>Java NetBeans Programming</h2>
+      <p>Object-oriented programming with GUI design. Ages 13–18. $180.</p>
+    </a>
+    <a class="card" href="scratch-jr.html">
+      <img src="https://via.placeholder.com/300x150?text=Scratch+JR" alt="Scratch JR">
+      <h2>Scratch JR</h2>
+      <p>Intro to early childhood programming. Ages 5–7. Free.</p>
+    </a>
+    <a class="card" href="python-ai.html">
+      <img src="https://via.placeholder.com/300x150?text=Python+AI" alt="Python AI">
+      <h2>Intro to Python & AI</h2>
+      <p>Explore Python and beginner AI concepts. Age 13–18. $180.</p>
+    </a>
+  </section>
+</body>
+</html>
